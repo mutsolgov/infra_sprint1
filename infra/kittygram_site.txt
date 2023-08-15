@@ -1,0 +1,5 @@
+IP: 158.160.12.215;
+name_taski: https://taski.freedynamicdns.org ;
+name_kittygram: https://kittygram777.freedynamicdns.org ;
+login: user;
+password: username;
