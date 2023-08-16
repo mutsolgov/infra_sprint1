@@ -1,6 +1,6 @@
 server {
-    listen 80;
     server_name taski.freedynamicdns.org;
+    server_tokens off;
 
     location /api/ {
         proxy_pass http://127.0.0.1:8000;
@@ -26,6 +26,7 @@ server {
 
 server {
     server_name kittygram777.freedynamicdns.org;
+    server_tokens off;
 
     location /api/ {
         proxy_pass http://127.0.0.1:8080;
@@ -57,10 +58,14 @@ server {
 server {
     if ($host = kittygram777.freedynamicdns.org) {
         return 301 https://$host$request_uri;
-    } # managed by Certbot
+    }
+
+    if ($host = taski.freedynamicdns.org) {
+        return 301 https://$host$request_uri;
+    }
 
     listen 80;
-    server_name kittygram777.freedynamicdns.org;
-    return 404; # managed by Certbot
-}
 
+    server_name taski.freedynamicdns.org kittygram777.freedynamicdns.org;
+    return 404;
+}
